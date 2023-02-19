@@ -103,7 +103,7 @@ body.dark{
 .sidebar li .icon,
 .sidebar li .text {
     color: var(--text-color);
-    transition: var(--tran-02);
+    transition: var(--tran-04);
 
 }
 
