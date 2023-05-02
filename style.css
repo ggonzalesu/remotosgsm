@@ -183,9 +183,12 @@ body {
 }
 
 
-.product__btn:hover {
-    color: var(--gray-dark);
+.product__btn a {
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--dark);
 }
+
 
 
 footer {
