@@ -36,7 +36,9 @@
 }
 
 body {
+    width: 100%;
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -62,18 +64,79 @@ body {
     margin: auto;
 }
 
+/* PASARELA LOGOS */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.logos {
+    overflow: hidden;
+    padding: 20px 0;
+    background: var(--light);
+    white-space: nowrap;
+}
+
+.logos::before,
+.logos::after {
+    position: absolute;
+    width: 250px;
+    height: 110px;
+    content: "";
+    z-index: 2;
+}
+
+.logos::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+}
+
+.logos::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+}
+
+.logos:hover .logos__slide {
+    animation-play-state: paused;
+}
+
+.logos__slide {
+    display: inline-block;
+    animation: 20s slide infinite linear;
+}
+
+.logos__slide img {
+    height: 90px;
+    margin: 0 10px;
+    filter: grayscale(100%);
+}
+
+.logos__slide img:hover {
+    filter: grayscale(0%);
+}
+
+
+
+
 /* CARD PRODUCTO */
+
 .products_block {
+    width: 100%-40px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    margin: auto;
 }
 
 .products_block h2 {
     margin-top: 20px;
-    text-align: center;
+    text-align: left;
+    color: var(--gray);
+    font-size: 1.3rem;
 
 }
 
@@ -218,6 +281,29 @@ footer {
 }
 
 
+/* PAGINA DE PRODUCTO */
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product2__img img{
+    margin-top: 10px;
+    width: 380px;
+}
+
+.product2__info h1{
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+
+
+
 
 @media screen and (max-width: 550px) {
 
@@ -238,11 +324,19 @@ footer {
 
     }
 
+    /* slide marcas*/
+
+
+    .logos__slide img {
+        filter: grayscale(0%);
+    }
+
 
     /* CARD PRODUCTO*/
 
 
     .products_block h2 {
+        padding: 15px 0 0 0;
         text-align: center;
         margin: auto;
         font-size: 15px;
