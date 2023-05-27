@@ -39,6 +39,10 @@ body {
   width: 100%;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -47,6 +51,7 @@ body {
 }
 
 .navbar {
+  width: 100%;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -186,11 +191,11 @@ body {
 /* *FOOTER */
 
 footer {
+  width: 100%;
   margin: 20px 0 0 0;
   padding: 30px;
   text-align: center;
   background-color: var(--gray-dark);
-  bottom: 0;
 }
 
 .footer__brnad a {
@@ -214,9 +219,14 @@ footer {
 /* *PAGINA DE PRODUCTO WEB */
 
 .product2 {
-  width: 1400px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #fff;
+  width: 1300px;
   margin: 20px auto;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .product2__img img {
@@ -233,7 +243,7 @@ footer {
 .price__time {
   margin: 20px 0;
   width: 700px;
-  background-color: var(--price-time);
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -255,7 +265,7 @@ span {
 }
 
 .product2__share {
-  background-color: var(--price-time);
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -263,9 +273,13 @@ span {
   margin-bottom: 20px;
 }
 
+.compartir ul {
+  display: flex;
+  gap: 10px;
+}
+
 .product2__share .compartir,
 .deseos {
-  padding: 0 30px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -279,22 +293,34 @@ span {
 .compartir .facebook {
   border: none;
   font-size: 30px;
-  color: #007bff;
+  color: var(--gray);
   background-color: transparent;
+}
+
+.compartir .facebook:hover {
+  color: #007bff;
 }
 
 .compartir .whatsapp {
   border: none;
   font-size: 30px;
-  color: #28a745;
+  color: var(--gray);
   background-color: transparent;
+}
+
+.compartir .whatsapp:hover {
+  color: #28a745;
 }
 
 .compartir .share {
   border: none;
   font-size: 30px;
-  color: #343a40;
+  color: var(--gray);
   background-color: transparent;
+}
+
+.compartir .share:hover {
+  color: #6f22ff;
 }
 
 .deseos span {
@@ -305,8 +331,12 @@ span {
 .deseos .favorite {
   border: none;
   font-size: 30px;
-  color: var(--dark);
+  color: var(--gray);
   background-color: transparent;
+}
+
+.deseos .favorite:hover {
+  color: var(--danger);
 }
 
 .product2__data span {
@@ -322,6 +352,82 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.product2__data .orden button {
+  width: 180px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* *DESCRIPCION */
+
+.container_tab {
+  width: 1300px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.tab__box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid rgba(229, 229, 229);
+  position: relative;
+}
+
+.tab__box .line {
+  position: absolute;
+  top: 62px;
+  left: 187px;
+  width: 90px;
+  height: 4px;
+  background-color: #6610f2;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.tab__box .tab_btn {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gray);
+  background: none;
+  border: none;
+  padding: 18px;
+  cursor: pointer;
+}
+
+.tab__box .tab_btn.active {
+  color: #6f42c1;
+}
+.content__box {
+  padding: 20px;
+}
+
+.content__box .content {
+  display: none;
+  animation: moving 0.5s ease;
+}
+
+@keyframes moving {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.content__box .content.active {
+  display: block;
+}
+
+.content__box .content h2 {
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1250px) {
@@ -394,35 +500,35 @@ span {
   /* *PAGINA DE PRODUCTO RESPONSIVE */
 
   .product2 {
-    width: 450px;
+    width: 390px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
   .product2__img img {
-    width: 450px;
+    width: 390px;
   }
-  
+
   .product2__info {
-    width: 500px;
+    width: 400px;
     margin: 20px;
     padding: 0 15px;
     text-align: center;
     flex-direction: column;
   }
-  
+
   .price__time {
     margin-bottom: 10px;
     width: 100%;
-    background-color: var(--price-time);
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  .price__time IMG{
-    width: 25PX;
+  .price__time IMG {
+    width: 25px;
   }
 
   .price__time .price,
@@ -432,14 +538,14 @@ span {
     align-items: center;
     gap: 10px;
   }
-  
+
   .price__time i,
   span {
     font-size: 20px;
     color: var(--dark);
     font-weight: 500;
   }
-  
+
   .product2__share {
     margin-bottom: 10px;
     width: 100%;
@@ -449,7 +555,7 @@ span {
     justify-content: space-between;
     padding: 10px;
   }
-  
+
   .product2__share .compartir,
   .deseos {
     padding: 0 30px;
@@ -457,37 +563,37 @@ span {
     align-items: center;
     gap: 10px;
   }
-  
+
   .compartir span {
     display: none;
   }
-  
+
   .compartir .facebook {
     border: none;
     font-size: 30px;
     color: #007bff;
     background-color: transparent;
   }
-  
+
   .compartir .whatsapp {
     border: none;
     font-size: 30px;
     color: #28a745;
     background-color: transparent;
   }
-  
+
   .compartir .share {
     border: none;
     font-size: 30px;
     color: #343a40;
     background-color: transparent;
   }
-  
+
   .deseos span {
     font-size: 18px;
     color: #177deb;
   }
-  
+
   .deseos .favorite {
     border: none;
     font-size: 30px;
@@ -495,30 +601,60 @@ span {
     background-color: transparent;
   }
 
-  .product2__data{
+  .product2__data {
     margin-bottom: 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .product2__data span {
     font-size: 20px;
     color: var(--gray);
   }
-  
+
   .product2__data input {
     margin-bottom: 20px;
   }
-  
+
   .product2__data .orden {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .ordem button{
-    width: 350px;
+  /* *DESCRIPCION */
+
+  .container_tab {
+    width: 390px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
   }
+
+  .tab__box {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid rgba(229, 229, 229);
+    position: relative;
+  }
+
+  .tab__box .line {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 55px;
+    height: 4px;
+    background-color: #6610f2;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .tab__box .tab_btn {
+    padding: 10px;
+  }
+
 }
