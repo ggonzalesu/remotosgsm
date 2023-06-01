@@ -81,6 +81,7 @@ body {
 }
 
 .logos {
+  width: 100%;
   overflow: hidden;
   padding: 20px 0;
   background: var(--light);
@@ -128,65 +129,66 @@ body {
 /* *PRODUCTOS VERSION WEB */
 
 .product {
-  width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 10px auto;
+}
+
+.product__title h2 {
+  font-size: 30px;
+  color: #626262;
+  margin: 20px;
 }
 
 .product__container {
+  width: 100%;
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  justify-items: center;
-  align-items: center;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: start;
 }
 
-.card__container {
-  background-color: var(--light);
-  padding: 15px;
-  box-shadow: -10px 7px 16px -4px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-}
-
-.product__card {
-  width: 300px;
+.card__container a {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 250px;
+  text-decoration: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-decoration: none;
+  justify-content: center;
 }
 
-.product__card img {
-  width: 300px;
+.card__container a img {
+  width: 100%;
 }
 
-.product__card .tittle {
-  text-decoration: none;
-  font-size: 20px;
-  color: var(--dark);
-  font-weight: 500;
-  text-align: center;
+.card__container .tittle {
+  padding: 0 10px;
+  text-align: justify;
+  font-size: 17px;
+  width: 100%; /* Agregado */
 }
 
 .card__price {
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 
-.card__price img {
-  width: 25px;
+.card__price img{
+  height: 25px;
 }
 
-.card__price .price {
-  font-size: 25px;
-  color: var(--dark);
-  font-weight: 500;
+.card__price span{
+  padding: 10px 0 0 0;
+  font-size: 23px;
+  font-weight: 600;
 }
 
-.card__time span {
-  font-size: 20px;
-  color: var(--gray);
-  font-weight: 500;
+.card__time span{
+  font-size: 23px;
+  padding: 20px;
 }
 
 /* *FOOTER */
@@ -455,6 +457,20 @@ small {
 
 @media screen and (max-width: 990px) {
 
+  /* *PRODUCTOS VERSION WEB */
+
+  .product {
+    width: 100%;
+  }
+
+  .product__title h2 {
+    font-size: 25px;
+  }
+
+  .product__container {}
+
+
+  /* *PRECIOS PRODUCTOS */
 
   .price__time .price img {
     width: 25px;
@@ -504,7 +520,7 @@ small {
     text-align: center;
   }
 
-  .container_tab{
+  .container_tab {
     width: 100%;
   }
 
@@ -513,6 +529,22 @@ small {
 }
 
 @media screen and (max-width: 770px) {
+
+
+
+  /* *PRODUCTOS 770 */
+
+  .product {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .product__title h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .product__container {}
 
   /* *PAGINA DE PRODUCTO WEB */
 
@@ -561,6 +593,40 @@ small {
   }
 
   /* Productos Responsive */
+
+
+
+
+  /* *PRODUCTOS movil */
+
+  .product__title h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+.product__container {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.card__container .tittle {
+  font-size: 17px;
+}
+
+.card__price{
+  gap: 10px;
+}
+
+.card__price img{
+  height: 20px;
+}
+
+.card__price span{
+  font-size: 18px;
+}
+
+.card__time span{
+  font-size: 18px;
+}
 
   /*footer responsive*/
 
