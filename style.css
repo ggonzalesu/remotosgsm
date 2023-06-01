@@ -607,6 +607,7 @@ small {
 
   .product__container {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;
   }
 
 
