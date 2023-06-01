@@ -66,6 +66,7 @@ body {
   width: 90%;
   justify-content: center;
   margin: auto;
+  margin-top: 10px;
 }
 
 /* PASARELA LOGOS */
@@ -219,36 +220,46 @@ footer {
 /* *PAGINA DE PRODUCTO WEB */
 
 .product2 {
-  padding: 30px;
-  border-radius: 20px;
-  background-color: #fff;
-  width: 1300px;
-  margin: 20px auto;
+  width: 1200px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 0 30px 0 30px;
+  margin: 20px auto 10px auto;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.product2__img {
+  align-items: normal;
+  width: 40%;
 }
 
 .product2__img img {
-  width: 500px;
+  width: 100%;
 }
 
 .product2__info {
-  width: 700px;
+  width: 60%;
   margin: 0 20px;
   display: flex;
   flex-direction: column;
 }
 
 .price__time {
-  margin: 20px 0;
-  width: 700px;
+  width: 100%;
+  margin: 10px 0;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
 }
+
+.price__time .price img {
+  width: 35px;
+}
+
 .price__time .price,
 .time {
   padding: 0 50px;
@@ -282,6 +293,7 @@ span {
 .deseos {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
 }
 
@@ -320,7 +332,7 @@ span {
 }
 
 .compartir .share:hover {
-  color: #6f22ff;
+  color: #9227EC;
 }
 
 .deseos span {
@@ -344,28 +356,37 @@ span {
   color: var(--gray);
 }
 
-.product2__data input {
-  margin-bottom: 20px;
+small {
+  margin-bottom: 10px;
+  color: #999999;
 }
 
 .product2__data .orden {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding-bottom: 20px;
 }
 
-.product2__data .orden button {
-  width: 180px;
+.btn-primary {
+  border: none;
+  background: #9227EC;
+  width: 350px;
   font-size: 20px;
   font-weight: 500;
+  border-radius: 15px;
+  margin: 10px;
 }
+
 
 /* *DESCRIPCION */
 
 .container_tab {
-  width: 1300px;
+  width: 1200px;
+  padding: 0 30px 0 30px;
+  margin: 20px auto 10px auto;
   background-color: #fff;
-  padding: 30px;
   border-radius: 20px;
 }
 
@@ -384,7 +405,7 @@ span {
   left: 187px;
   width: 90px;
   height: 4px;
-  background-color: #6610f2;
+  background-color: #9227EC;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
@@ -400,8 +421,9 @@ span {
 }
 
 .tab__box .tab_btn.active {
-  color: #6f42c1;
+  color: #9227EC;
 }
+
 .content__box {
   padding: 20px;
 }
@@ -416,6 +438,7 @@ span {
     transform: translateX(50px);
     opacity: 0;
   }
+
   to {
     transform: translateX(0px);
     opacity: 1;
@@ -430,21 +453,92 @@ span {
   margin-bottom: 10px;
 }
 
-@media screen and (max-width: 1250px) {
-  .product2 {
-    width: 100vh-30px;
-    flex-direction: column;
+@media screen and (max-width: 990px) {
+
+
+  .price__time .price img {
+    width: 25px;
+  }
+
+
+  .price__time .price,
+  .time {
+    padding: 0 10px;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+  }
+
+
+  .price__time i,
+  span {
+    font-size: 18px;
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+
+  .product2__share {
+    padding: 0px;
+    margin-bottom: 0px;
+    gap: 20px;
+  }
+
+
+  .product2__share .compartir {
+    margin: 0 auto;
+  }
+
+  .product2__share .compartir span {
+    display: none;
+  }
+
+
+  .product2__share .deseos {
+    justify-content: space-around;
+  }
+
+
+  .product2__share .deseos .text span {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .container_tab{
+    width: 100%;
+  }
+
+
+
+}
+
+@media screen and (max-width: 770px) {
+
+  /* *PAGINA DE PRODUCTO WEB */
+
+  .product2 {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .product2__img {
+    align-items: normal;
+    width: 100%;
+  }
+
+  .product2__img img {
+    width: 100%;
   }
 
   .product2__info {
-    width: 700px;
-    margin: 20px;
+    width: 100%;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 450px) {
   .d-flex {
     width: 80%;
     justify-content: center;
@@ -500,18 +594,18 @@ span {
   /* *PAGINA DE PRODUCTO RESPONSIVE */
 
   .product2 {
-    width: 390px;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
   .product2__img img {
-    width: 390px;
+    width: 100%;
   }
 
   .product2__info {
-    width: 400px;
+    width: 100%;
     margin: 20px;
     padding: 0 15px;
     text-align: center;
@@ -539,29 +633,9 @@ span {
     gap: 10px;
   }
 
-  .price__time i,
-  span {
-    font-size: 20px;
-    color: var(--dark);
-    font-weight: 500;
-  }
 
   .product2__share {
-    margin-bottom: 10px;
     width: 100%;
-    background-color: var(--price-time);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-  }
-
-  .product2__share .compartir,
-  .deseos {
-    padding: 0 30px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
   }
 
   .compartir span {
@@ -570,21 +644,21 @@ span {
 
   .compartir .facebook {
     border: none;
-    font-size: 30px;
+    font-size: 25px;
     color: #007bff;
     background-color: transparent;
   }
 
   .compartir .whatsapp {
     border: none;
-    font-size: 30px;
+    font-size: 25px;
     color: #28a745;
     background-color: transparent;
   }
 
   .compartir .share {
     border: none;
-    font-size: 30px;
+    font-size: 25px;
     color: #343a40;
     background-color: transparent;
   }
@@ -604,18 +678,13 @@ span {
   .product2__data {
     margin-bottom: 20px;
     width: 100%;
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: justify;
+
   }
 
   .product2__data span {
     font-size: 20px;
-    color: var(--gray);
-  }
-
-  .product2__data input {
-    margin-bottom: 20px;
   }
 
   .product2__data .orden {
@@ -627,7 +696,7 @@ span {
   /* *DESCRIPCION */
 
   .container_tab {
-    width: 390px;
+    width: 100%;
     background-color: #fff;
     padding: 30px;
     border-radius: 20px;
@@ -655,6 +724,7 @@ span {
 
   .tab__box .tab_btn {
     padding: 10px;
+    font-size: 15px;
   }
 
 }
