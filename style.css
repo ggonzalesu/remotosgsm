@@ -167,7 +167,8 @@ body {
   padding: 0 10px;
   text-align: justify;
   font-size: 17px;
-  width: 100%; /* Agregado */
+  width: 100%;
+  /* Agregado */
 }
 
 .card__price {
@@ -176,17 +177,17 @@ body {
   align-items: center;
 }
 
-.card__price img{
+.card__price img {
   height: 25px;
 }
 
-.card__price span{
+.card__price span {
   padding: 10px 0 0 0;
   font-size: 23px;
   font-weight: 600;
 }
 
-.card__time span{
+.card__time span {
   font-size: 23px;
   padding: 20px;
 }
@@ -604,34 +605,37 @@ small {
     text-align: center;
   }
 
-.product__container {
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
+  .product__container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
 
 
-.product__container a{
-  width: 180px;
-}
+  .product__container a {
+    width: 150px;
+    max-width: 150px;
+    margin: 10px;
+  }
 
-.card__container .tittle {
-  font-size: 17px;
-}
+  .card__container .tittle {
+    font-size: 15px;
+    text-align: initial;
+  }
 
-.card__price{
-  gap: 10px;
-}
+  .card__price {
+    gap: 10px;
+  }
 
-.card__price img{
-  height: 20px;
-}
+  .card__price img {
+    height: 20px;
+  }
 
-.card__price span{
-  font-size: 18px;
-}
+  .card__price span {
+    font-size: 18px;
+  }
 
-.card__time span{
-  font-size: 18px;
-}
+  .card__time span {
+    font-size: 18px;
+  }
 
   /*footer responsive*/
 
