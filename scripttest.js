@@ -133,82 +133,37 @@ window.onload = function () {
 
 
 //zoom imagen
-// Obtener la imagen y el contenedor
-var imagen = document.getElementById("selectedImage");
-var contenedor = document.querySelector(".imagen");
+const imagen = document.getElementById('selectedImage');
 
-// Variables para el zoom y el arrastre
-var scale = 1;
-var dragging = false;
-var dragStart = { x: 0, y: 0 };
-var dragOffset = { x: 0, y: 0 };
+const mc = new Hammer(imagen);
+mc.get('pinch').set({ enable: true });
+mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
-// Función para realizar el zoom
-function zoomImage(event) {
-  event.preventDefault();
+let currentScale = 1;
+let lastPosX = 0;
+let lastPosY = 0;
+let posX = 0;
+let posY = 0;
+let initialScale = 1;
+let initialPosX = 0;
+let initialPosY = 0;
 
-  // Ajustar el factor de zoom según la dirección del scroll
-  var zoomDelta = event.deltaY * -0.01;
-  var prevScale = scale;
-  scale = Math.min(Math.max(1, scale + zoomDelta), 3);
-
-  // Obtener la posición del puntero del mouse
-  var mouseX = event.clientX - contenedor.offsetLeft;
-  var mouseY = event.clientY - contenedor.offsetTop;
-
-  // Calcular la posición de la imagen en relación al puntero del mouse
-  var imageX = mouseX - imagen.offsetLeft;
-  var imageY = mouseY - imagen.offsetTop;
-
-  // Calcular el desplazamiento de la imagen según el escalado y la posición del puntero del mouse
-  var offsetX = -((imageX * (scale - prevScale)) / scale);
-  var offsetY = -((imageY * (scale - prevScale)) / scale);
-
-  // Aplicar el zoom a la imagen y ajustar el desplazamiento
-  imagen.style.transformOrigin = `${mouseX}px ${mouseY}px`;
-  imagen.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
-}
-
-// Evento de rueda del mouse para zoom
-contenedor.addEventListener("wheel", zoomImage);
-
-// Evento de inicio de arrastre
-imagen.addEventListener("mousedown", function(event) {
-  event.preventDefault();
-
-  // Habilitar el arrastre
-  dragging = true;
-  dragStart = { x: event.clientX, y: event.clientY };
-  dragOffset = { x: 0, y: 0 };
+mc.on('pinchstart', function (e) {
+  initialScale = currentScale || 1;
 });
 
-// Evento de finalización de arrastre
-window.addEventListener("mouseup", function() {
-  if (dragging) {
-    // Finalizar el arrastre y ajustar la posición de la imagen
-    dragging = false;
-    imagen.style.transform = `scale(${scale}) translate(${dragOffset.x}px, ${dragOffset.y}px)`;
-  }
+mc.on('pinch', function (e) {
+  currentScale = initialScale * e.scale;
+  imagen.style.transform = `scale(${currentScale}) translate(${posX}px, ${posY}px)`;
 });
 
-// Evento de movimiento del mouse
-window.addEventListener("mousemove", function(event) {
-  if (dragging) {
-    // Calcular el desplazamiento del mouse durante el arrastre
-    var offsetX = event.clientX - dragStart.x;
-    var offsetY = event.clientY - dragStart.y;
+mc.on('panstart', function (e) {
+  lastPosX = posX;
+  lastPosY = posY;
+});
 
-    // Calcular el desplazamiento límite según el tamaño de la imagen y el contenedor
-    var maxOffsetX = (imagen.offsetWidth * scale) - contenedor.offsetWidth;
-    var maxOffsetY = (imagen.offsetHeight * scale) - contenedor.offsetHeight;
-
-    // Limitar el desplazamiento dentro de los límites
-    offsetX = Math.max(Math.min(offsetX, maxOffsetX), -maxOffsetX);
-    offsetY = Math.max(Math.min(offsetY, maxOffsetY), -maxOffsetY);
-
-    // Actualizar la posición de la imagen según el desplazamiento del mouse
-    dragOffset.x = offsetX;
-    dragOffset.y = offsetY;
-    imagen.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
-  }
+mc.on('pan', function (e) {
+  posX = lastPosX + e.deltaX;
+  posY = lastPosY + e.deltaY;
+  imagen.style.transform = `scale(${currentScale}) translate(${posX}px, ${posY}px)`;
 });
