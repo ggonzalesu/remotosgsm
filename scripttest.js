@@ -1,5 +1,5 @@
 
-var API_KEY = 'AIzaSyDeBdqKE4e20-KwEZAdSC8aLSm9T98udxU';
+var API_KEY = 'AIzaSyB8jACrHjLcDxbzELNkfxQ1r7ZxTk9oDZM';
 var FOLDER_ID = '1mJCHjQjkuSRNIv-PdobFxHIzWclcEJUN';
 
 // Obtener elementos de la carpeta
@@ -130,3 +130,68 @@ window.onload = function () {
   getFolderItems();
   showSelectedImage();
 };
+
+
+//zoom imagen
+// Obtener la imagen y el contenedor
+var imagen = document.getElementById("selectedImage");
+var contenedor = document.querySelector(".imagen");
+
+// Variables para el zoom y el arrastre
+var scale = 1;
+var dragging = false;
+var dragStart = { x: 0, y: 0 };
+var dragOffset = { x: 0, y: 0 };
+
+// Función para realizar el zoom
+function zoomImage(event) {
+  event.preventDefault();
+
+  // Ajustar el factor de zoom según la dirección del scroll
+  var zoomDelta = event.deltaY * -0.003;
+  scale = Math.min(Math.max(1, scale + zoomDelta), 3);
+
+  // Obtener la posición del puntero del mouse
+  var mouseX = event.clientX - contenedor.offsetLeft;
+  var mouseY = event.clientY - contenedor.offsetTop;
+
+  // Calcular la posición de la imagen en relación al puntero del mouse
+  var imageX = mouseX - imagen.offsetLeft;
+  var imageY = mouseY - imagen.offsetTop;
+
+  // Calcular el desplazamiento de la imagen según el escalado y la posición del puntero del mouse
+  var offsetX = -((imageX * zoomDelta) / scale);
+  var offsetY = -((imageY * zoomDelta) / scale);
+
+  // Aplicar el zoom a la imagen y ajustar el desplazamiento
+  imagen.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+}
+
+// Evento de rueda del mouse para zoom
+contenedor.addEventListener("wheel", zoomImage);
+
+// Evento de inicio de arrastre
+imagen.addEventListener("mousedown", function(event) {
+  event.preventDefault();
+
+  // Habilitar el arrastre
+  dragging = true;
+  dragStart = { x: event.clientX, y: event.clientY };
+});
+
+// Evento de finalización de arrastre
+window.addEventListener("mouseup", function() {
+  dragging = false;
+});
+
+// Evento de movimiento del mouse
+window.addEventListener("mousemove", function(event) {
+  if (dragging) {
+    // Calcular el desplazamiento del mouse durante el arrastre
+    var offsetX = event.clientX - dragStart.x;
+    var offsetY = event.clientY - dragStart.y;
+
+    // Actualizar la posición de la imagen según el desplazamiento del mouse
+    imagen.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+  }
+});

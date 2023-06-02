@@ -38,7 +38,7 @@
 body {
   width: 100%;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,7 +168,6 @@ body {
   text-align: justify;
   font-size: 17px;
   width: 100%;
-  /* Agregado */
 }
 
 .card__price {
@@ -195,9 +194,8 @@ body {
 /* *FOOTER */
 
 footer {
+  bottom: 0;
   width: 100%;
-  margin: 20px 0 0 0;
-  padding: 30px;
   text-align: center;
   background-color: var(--gray-dark);
 }
@@ -456,7 +454,72 @@ small {
   margin-bottom: 10px;
 }
 
+
+/* *GSMHELP ISP */
+.img__section {
+  width: 1200px;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.img__section .selectores {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.img__section .selectores select{
+  width: 45%;
+  font-size: 20px;
+  color: #343a40;
+}
+
+.img__section .imagen{
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img__section .imagen img{
+  cursor: grab;
+  transition: transform 0.5s;
+}
+
+.img__section .imagen img.grabbing{
+  cursor: grabbing;
+}
+
+
+
+.img__section .imagen.zoomed img {
+  transform: scale(2);
+}
+
+
 @media screen and (max-width: 990px) {
+
+  
+  
+/* *GSMHELP ISP */
+.img__section {
+  width: 990;
+}
+
+.img__section .selectores{
+  width: 100%;
+  align-items: center;
+}
+
+.img__section .selectores select{
+width: 80%;
+}
+
 
   /* *PRODUCTOS VERSION WEB */
 
@@ -467,8 +530,6 @@ small {
   .product__title h2 {
     font-size: 25px;
   }
-
-  .product__container {}
 
 
   /* *PRECIOS PRODUCTOS */
@@ -531,6 +592,23 @@ small {
 
 @media screen and (max-width: 770px) {
 
+  
+/* *GSMHELP ISP */
+.img__section {
+  width: 770px;
+}
+
+.img__section .selectores{
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img__section .selectores select{
+width: 80%;
+}
+
 
 
   /* *PRODUCTOS 770 */
@@ -545,7 +623,6 @@ small {
     text-align: center;
   }
 
-  .product__container {}
 
   /* *PAGINA DE PRODUCTO WEB */
 
@@ -572,6 +649,20 @@ small {
 }
 
 @media screen and (max-width: 450px) {
+
+  
+/* *GSMHELP ISP */
+.img__section {
+  width: 90%;
+}
+
+
+.img__section .image img{
+  width: 100%;
+}
+
+/**/
+
   .d-flex {
     width: 80%;
     justify-content: center;
@@ -592,11 +683,6 @@ small {
   .logos__slide img {
     filter: grayscale(0%);
   }
-
-  /* Productos Responsive */
-
-
-
 
   /* *PRODUCTOS movil */
 
