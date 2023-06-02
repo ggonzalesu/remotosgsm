@@ -148,7 +148,8 @@ function zoomImage(event) {
   event.preventDefault();
 
   // Ajustar el factor de zoom según la dirección del scroll
-  var zoomDelta = event.deltaY * -0.003;
+  var zoomDelta = event.deltaY * -0.01;
+  var prevScale = scale;
   scale = Math.min(Math.max(1, scale + zoomDelta), 3);
 
   // Obtener la posición del puntero del mouse
@@ -160,10 +161,11 @@ function zoomImage(event) {
   var imageY = mouseY - imagen.offsetTop;
 
   // Calcular el desplazamiento de la imagen según el escalado y la posición del puntero del mouse
-  var offsetX = -((imageX * zoomDelta) / scale);
-  var offsetY = -((imageY * zoomDelta) / scale);
+  var offsetX = -((imageX * (scale - prevScale)) / scale);
+  var offsetY = -((imageY * (scale - prevScale)) / scale);
 
   // Aplicar el zoom a la imagen y ajustar el desplazamiento
+  imagen.style.transformOrigin = `${mouseX}px ${mouseY}px`;
   imagen.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
 }
 
@@ -177,11 +179,16 @@ imagen.addEventListener("mousedown", function(event) {
   // Habilitar el arrastre
   dragging = true;
   dragStart = { x: event.clientX, y: event.clientY };
+  dragOffset = { x: 0, y: 0 };
 });
 
 // Evento de finalización de arrastre
 window.addEventListener("mouseup", function() {
-  dragging = false;
+  if (dragging) {
+    // Finalizar el arrastre y ajustar la posición de la imagen
+    dragging = false;
+    imagen.style.transform = `scale(${scale}) translate(${dragOffset.x}px, ${dragOffset.y}px)`;
+  }
 });
 
 // Evento de movimiento del mouse
@@ -191,7 +198,17 @@ window.addEventListener("mousemove", function(event) {
     var offsetX = event.clientX - dragStart.x;
     var offsetY = event.clientY - dragStart.y;
 
+    // Calcular el desplazamiento límite según el tamaño de la imagen y el contenedor
+    var maxOffsetX = (imagen.offsetWidth * scale) - contenedor.offsetWidth;
+    var maxOffsetY = (imagen.offsetHeight * scale) - contenedor.offsetHeight;
+
+    // Limitar el desplazamiento dentro de los límites
+    offsetX = Math.max(Math.min(offsetX, maxOffsetX), -maxOffsetX);
+    offsetY = Math.max(Math.min(offsetY, maxOffsetY), -maxOffsetY);
+
     // Actualizar la posición de la imagen según el desplazamiento del mouse
+    dragOffset.x = offsetX;
+    dragOffset.y = offsetY;
     imagen.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
   }
 });

@@ -487,18 +487,9 @@ small {
 }
 
 .img__section .imagen img{
+  height: 800px;
   cursor: grab;
   transition: transform 0.5s;
-}
-
-.img__section .imagen img.grabbing{
-  cursor: grabbing;
-}
-
-
-
-.img__section .imagen.zoomed img {
-  transform: scale(2);
 }
 
 
