@@ -1,27 +1,30 @@
 
 var API_KEY = 'AIzaSyB8jACrHjLcDxbzELNkfxQ1r7ZxTk9oDZM';
-var FOLDER_ID = '1mJCHjQjkuSRNIv-PdobFxHIzWclcEJUN';
+var FOLDER_ID = '1-bjFtGpYfyANU7zK6UtDL4yxIyGGH4GX';
 
-// Obtener elementos de la carpeta
-function getFolderItems() {
-  var url = 'https://www.googleapis.com/drive/v3/files?q=%27' + FOLDER_ID + '%27+in+parents&key=' + API_KEY;
+// Obtener elementos de la carpeta "marca" y mostrarlos en orden alfabético
+function getMarcaFolderItems() {
+  var marcaSelect = document.getElementById('marca');
 
-  fetch(url)
+  // Limpiar selector de marca
+  marcaSelect.innerHTML = '';
+
+  // Obtener elementos de la carpeta "marca" mediante una llamada a la API
+  var marcaUrl = 'https://www.googleapis.com/drive/v3/files?q=%27' + FOLDER_ID + '%27+in+parents&key=' + API_KEY;
+
+  fetch(marcaUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       var items = data.files;
 
-      // Obtener referencias a los selectores de marca y modelo
-      var marcaSelect = document.getElementById('marca');
-      var modeloSelect = document.getElementById('modelo');
+      // Ordenar elementos alfabéticamente
+      items.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      });
 
-      // Limpiar selectores
-      marcaSelect.innerHTML = '';
-      modeloSelect.innerHTML = '';
-
-      // Agregar elementos al selector de marca
+      // Agregar elementos al selector de marca en orden alfabético
       for (var i = 0; i < items.length; i++) {
         var option = document.createElement('option');
         option.value = items[i].id;
@@ -29,48 +32,83 @@ function getFolderItems() {
         marcaSelect.appendChild(option);
       }
 
-      // Actualizar los elementos del selector de modelo
-      updateModelos();
-
-      // Mostrar la imagen seleccionada
-      showSelectedImage();
+      // Actualizar los elementos del selector de tipo
+      updateTipoFolderItems();
     })
     .catch(function (error) {
-      console.error('Error al obtener elementos de la carpeta:', error);
+      console.error('Error al obtener elementos de la carpeta "marca":', error);
     });
 }
 
-// Limpiar selectores de modelo e imagen
-function clearModeloAndImage() {
-  var modeloSelect = document.getElementById('modelo');
-  modeloSelect.innerHTML = '';
-
-  var img = document.querySelector('.imagen img');
-  img.src = '';
-}
-
-// Actualizar los elementos del selector de modelo
-function updateModelos() {
-  clearModeloAndImage();
-
+// Obtener elementos de la carpeta "tipo" y mostrarlos en orden alfabético
+function updateTipoFolderItems() {
   var marcaSelect = document.getElementById('marca');
-  var modeloSelect = document.getElementById('modelo');
-  var selectedMarcaId = marcaSelect.value;
+  var tipoSelect = document.getElementById('tipo');
+  var selectedMarca = marcaSelect.value;
 
-  var url = 'https://www.googleapis.com/drive/v3/files?q=%27' + selectedMarcaId + '%27+in+parents&key=' + API_KEY;
+  // Limpiar selector de tipo
+  tipoSelect.innerHTML = '';
 
-  fetch(url)
+  // Obtener elementos de la carpeta "tipo" mediante una llamada a la API
+  var tipoUrl = 'https://www.googleapis.com/drive/v3/files?q=%27' + selectedMarca + '%27+in+parents&key=' + API_KEY;
+
+  fetch(tipoUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       var items = data.files;
 
-      // Agregar elementos al selector de modelo
+      // Ordenar elementos alfabéticamente
+      items.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      });
+
+      // Agregar elementos al selector de tipo en orden alfabético
       for (var i = 0; i < items.length; i++) {
         var option = document.createElement('option');
         option.value = items[i].id;
-        option.text = items[i].name;
+        option.text = items[i].name.replace(/\.[^/.]+$/, ''); // Eliminar la extensión del nombre del archivo
+        tipoSelect.appendChild(option);
+      }
+
+      // Actualizar los elementos del selector de modelo
+      updateModeloFolderItems();
+    })
+    .catch(function (error) {
+      console.error('Error al obtener elementos de la carpeta "tipo":', error);
+    });
+}
+
+// Obtener elementos de la carpeta "modelo" y mostrarlos en orden alfabético
+function updateModeloFolderItems() {
+  var tipoSelect = document.getElementById('tipo');
+  var modeloSelect = document.getElementById('modelo');
+  var selectedTipo = tipoSelect.value;
+
+  // Limpiar selector de modelo
+  modeloSelect.innerHTML = '';
+
+  // Obtener elementos de la carpeta "modelo" mediante una llamada a la API
+  var modeloUrl = 'https://www.googleapis.com/drive/v3/files?q=%27' + selectedTipo + '%27+in+parents&key=' + API_KEY;
+
+  fetch(modeloUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var items = data.files;
+
+      // Ordenar elementos alfabéticamente
+      items.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      });
+
+      // Agregar elementos al selector de modelo en orden alfabético sin la extensión del nombre del archivo
+      for (var i = 0; i < items.length; i++) {
+        var option = document.createElement('option');
+        option.value = items[i].id;
+        option.text = items[i].name.replace(/\.[^/.]+$/, ''); // Eliminar la extensión del nombre del archivo
         modeloSelect.appendChild(option);
       }
 
@@ -78,7 +116,7 @@ function updateModelos() {
       showSelectedImage();
     })
     .catch(function (error) {
-      console.error('Error al obtener elementos de la carpeta:', error);
+      console.error('Error al obtener elementos de la carpeta "modelo":', error);
     });
 }
 
@@ -88,33 +126,26 @@ function showSelectedImage() {
   var selectedModeloId = modeloSelect.value;
 
   // Obtener el enlace de la imagen usando la API de Google Drive
-  var url = 'https://www.googleapis.com/drive/v3/files/' + selectedModeloId + '?key=' + API_KEY;
+  var imageUrl = 'https://drive.google.com/uc?id=' + selectedModeloId;
 
-  fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      var img = document.getElementById('selectedImage');
-      img.src = 'https://drive.google.com/uc?id=' + selectedModeloId;
-    })
-    .catch(function (error) {
-      console.error('Error al obtener la imagen:', error);
-    });
-}
-
-// Limpiar selectores al seleccionar marca
-function clearMarcaSelection() {
-  clearModeloAndImage();
+  var img = document.getElementById('selectedImage');
+  img.src = imageUrl;
 }
 
 // Obtener referencia al selector de marca
 var marcaSelect = document.getElementById('marca');
 
-// Agregar event listener al selector de marca para limpiar el selector de modelo y mostrar la imagen
+// Agregar event listener al selector de marca para actualizar el selector de tipo
 marcaSelect.addEventListener('change', function () {
-  clearModeloAndImage();
-  updateModelos();
+  updateTipoFolderItems();
+});
+
+// Obtener referencia al selector de tipo
+var tipoSelect = document.getElementById('tipo');
+
+// Agregar event listener al selector de tipo para actualizar el selector de modelo
+tipoSelect.addEventListener('change', function () {
+  updateModeloFolderItems();
 });
 
 // Obtener referencia al selector de modelo
@@ -125,45 +156,8 @@ modeloSelect.addEventListener('change', function () {
   showSelectedImage();
 });
 
-// Llamar a la función de obtener elementos de la carpeta al cargar la página
+// Llamar a la función de obtener elementos de la carpeta "marca" al cargar la página
 window.onload = function () {
-  getFolderItems();
+  getMarcaFolderItems();
   showSelectedImage();
 };
-
-
-//zoom imagen
-const imagen = document.getElementById('selectedImage');
-
-const mc = new Hammer(imagen);
-mc.get('pinch').set({ enable: true });
-mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-
-let currentScale = 1;
-let lastPosX = 0;
-let lastPosY = 0;
-let posX = 0;
-let posY = 0;
-let initialScale = 1;
-let initialPosX = 0;
-let initialPosY = 0;
-
-mc.on('pinchstart', function (e) {
-  initialScale = currentScale || 1;
-});
-
-mc.on('pinch', function (e) {
-  currentScale = initialScale * e.scale;
-  imagen.style.transform = `scale(${currentScale}) translate(${posX}px, ${posY}px)`;
-});
-
-mc.on('panstart', function (e) {
-  lastPosX = posX;
-  lastPosY = posY;
-});
-
-mc.on('pan', function (e) {
-  posX = lastPosX + e.deltaX;
-  posY = lastPosY + e.deltaY;
-  imagen.style.transform = `scale(${currentScale}) translate(${posX}px, ${posY}px)`;
-});
