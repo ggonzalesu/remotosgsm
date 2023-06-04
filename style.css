@@ -584,6 +584,7 @@ span {
   height: 400px;
   display: flex;
   justify-content: space-around;
+  border: solid 1px var(--borde-gris);
 }
 
 .img__section .imagen img {
