@@ -260,20 +260,20 @@ footer {
   position: relative;
 }
 
-.product2__img .deseos{
-position: absolute;
-top: 15px;
-left: 15px;
-z-index: 10px;
+.product2__img .deseos {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10px;
 }
 
 
-.product2__img .deseos button{
+.product2__img .deseos button {
   background: none;
   border: none;
 }
 
-.product2__img .deseos button i{
+.product2__img .deseos button i {
   font-size: 30px;
   color: rgb(251, 41, 41);
 }
@@ -293,31 +293,34 @@ z-index: 10px;
   padding: 15px;
 }
 
-.price__time .price{
+.price__time .price {
   display: flex;
   align-items: center;
 }
 
-.price__time .price img{
+.price__time .price img {
   width: 35px;
 }
 
-.price__time .price span{
+.price__time .price span {
   font-weight: 500;
   color: var(--texto-principal);
   font-size: 35px;
 }
 
-.price__time .time{
-display: flex;align-items: center;
-gap: 10px;
+.price__time .time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.price__time .time i, span{
+
+.price__time .time i,
+span {
   font-size: 13px;
   color: var(--texto-final);
 }
 
-.product2__data{
+.product2__data {
   width: 100%;
   border: solid 1px var(--borde-gris);
   border-radius: 15px;
@@ -325,17 +328,19 @@ gap: 10px;
   padding: 15px;
 }
 
-.product2__data span{
+.product2__data span {
   text-align: center;
   color: var(--texto-principal);
   font-size: 20px;
   margin-bottom: 15px;
 }
-.orden__detail span{
+
+.orden__detail span {
   color: var(--texto-secundario);
   font-size: 15px;
 }
-.orden__detail small{
+
+.orden__detail small {
   color: var(--texto-secundario);
   font-size: 12px;
 }
@@ -345,29 +350,29 @@ gap: 10px;
   width: 100%;
 }
 
-.product2__data .orden button{
+.product2__data .orden button {
   border: none;
   width: 100%;
   background: var(--boton-primario);
   font-size: 20px;
 }
 
-.product2__share{
+.product2__share {
   width: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
   padding: 0 10px;
   gap: 8px;
-  
+
 }
 
-.product2__share span{
-color: var(--color-enlaces);
-font-size: 15px;
+.product2__share span {
+  color: var(--color-enlaces);
+  font-size: 15px;
 }
 
-.product2__share button{
+.product2__share button {
   background: none;
   border: none;
   color: var(--color-enlaces);
@@ -527,7 +532,7 @@ font-size: 15px;
 
   /* *GSMHELP ISP */
   .img__section {
-    width: 770px;
+    width: 850px;
   }
 
   .img__section .selectores {
@@ -558,17 +563,21 @@ font-size: 15px;
 
   /* *PAGINA DE PRODUCTO WEB */
 
+  .product2 {
+    width: 850px;
+  }
 
-  .info_product {
+
+  .titulo__product {
     width: 100%;
     flex-direction: column;
   }
 
-  .product2__img, .product2__info{
+  .info_product {
     width: 100%;
   }
 
-  .container_tab{
+  .container_tab {
     width: 100%;
   }
 }
@@ -681,18 +690,27 @@ font-size: 15px;
   /* *PAGINA DE PRODUCTO RESPONSIVE */
 
 
+
+  .product2 {
+    width: 100%;
+  }
+
   .info_product {
-    width: 100%;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  .product2__img, .product2__info{
+  .product2__img, .product2__info {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .product2__img .deseos img {
     width: 100%;
   }
 
-  .container_tab{
-    width: 100%;
-  }
+
 
   /* *DESCRIPCION */
 
