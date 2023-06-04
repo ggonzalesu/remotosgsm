@@ -454,60 +454,46 @@ span {
 
 
 /* *GSMHELP ISP */
-.img__section {
+
+.img__content {
   width: 1200px;
-  background: #fff;
-  padding: 20px;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 15px;
+  background: var(--fondo-1);
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .img__section .selectores {
   width: 100%;
+  margin: 10px;
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
+  justify-content: space-around;
 }
 
-.img__section .selectores select {
-  width: 45%;
-  font-size: 20px;
-  color: #343a40;
+.img__section select {
+  width: 30%;
+  color: var(--texto-secundario);
 }
 
 .img__section .imagen {
   width: 100%;
-  overflow: hidden;
+  height: 800px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
 }
 
+
+
 .img__section .imagen img {
-  height: 800px;
-  cursor: grab;
-  transition: transform 0.5s;
+  width: 90%;
 }
 
 
 @media screen and (max-width: 990px) {
 
-
-
-  /* *GSMHELP ISP */
-  .img__section {
-    width: 990;
-  }
-
-  .img__section .selectores {
-    width: 100%;
-    align-items: center;
-  }
-
-  .img__section .selectores select {
-    width: 80%;
-  }
 
 
   /* *PRODUCTOS VERSION WEB */
@@ -528,25 +514,6 @@ span {
 }
 
 @media screen and (max-width: 850px) {
-
-
-  /* *GSMHELP ISP */
-  .img__section {
-    width: 850px;
-  }
-
-  .img__section .selectores {
-    width: 100%;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .img__section .selectores select {
-    width: 80%;
-  }
-
-
 
   /* *PRODUCTOS 770 */
 
@@ -585,15 +552,46 @@ span {
 @media screen and (max-width: 450px) {
 
 
+ 
   /* *GSMHELP ISP */
-  .img__section {
-    width: 90%;
-  }
 
+  
 
-  .img__section .image img {
-    width: 100%;
-  }
+.img__content {
+  width: 100%;
+}
+.img__section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.img__content .selectores {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img__section select {
+  width: 100%;
+}
+
+.img__content  .imagen {
+  border-radius: 10px;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.img__section .imagen img {
+  border-radius: 10px;
+  width: 100%;
+  object-fit: contain;
+}
+
 
   /**/
 
@@ -701,7 +699,8 @@ span {
     align-items: center;
   }
 
-  .product2__img, .product2__info {
+  .product2__img,
+  .product2__info {
     width: 100%;
     margin-bottom: 5px;
   }
