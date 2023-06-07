@@ -81,7 +81,11 @@ body {
   margin-top: 10px;
 }
 
-/* PASARELA LOGOS */
+/* *PASARELA DE IMAGENES */
+.carousel{
+  width: 100%;
+}
+/* *PASARELA LOGOS */
 @keyframes slide {
   from {
     transform: translateX(0);
@@ -141,67 +145,101 @@ body {
 /* *PRODUCTOS VERSION WEB */
 
 .product {
-  width: 100%;
-  max-width: 1200px;
+  width: 1350px;
   margin: 10px auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .product__title h2 {
-  font-size: 30px;
-  color: #626262;
-  margin: 20px;
+  font-size: 25px;
+  color: var(--texto-final);
+  margin: 20px 0;
+  text-align: center;
 }
 
 .product__container {
   width: 100%;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  align-items: start;
+  justify-items: center;
 }
 
-.card__container a {
-  background-color: #ffffff;
+.card__container {
+  background: var(--fondo-blanco);
+  width: 220px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.product__card {
   width: 100%;
-  max-width: 250px;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.card__container a img {
-  width: 100%;
+.product__img {
+  position: relative;
 }
 
-.card__container .tittle {
-  padding: 0 10px;
-  text-align: justify;
-  font-size: 17px;
+.product__img i {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 10px;
+  font-size: 20px;
+  color: red;
+}
+
+.product__img img {
   width: 100%;
+  border-radius: 10px;
 }
 
 .card__price {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
 .card__price img {
-  height: 25px;
+  width: 25px;
+  margin-right: 5px;
 }
 
 .card__price span {
-  padding: 10px 0 0 0;
-  font-size: 23px;
-  font-weight: 600;
+  font-size: 24px;
+  color: var(--texto-principal);
+}
+
+.card__time {
+  width: 200px;
+  background-color: var(--boton-primario);
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px auto;
+  padding: 8px;
 }
 
 .card__time span {
-  font-size: 23px;
-  padding: 20px;
+  color: var(--price-time);
+  font-size: 20px;
 }
+
+
 
 /* *FOOTER */
 
@@ -263,7 +301,7 @@ footer {
 .product2__img .deseos {
   position: absolute;
   top: 15px;
-  left: 15px;
+  right: 15px;
   z-index: 10px;
 }
 
@@ -491,7 +529,6 @@ span {
   width: 90%;
 }
 
-
 @media screen and (max-width: 990px) {
 
 
@@ -552,64 +589,48 @@ span {
 @media screen and (max-width: 450px) {
 
 
- 
+
   /* *GSMHELP ISP */
 
-  
-
-.img__content {
-  width: 100%;
-}
-.img__section{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.img__content .selectores {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.img__section select {
-  width: 100%;
-}
-
-.img__content  .imagen {
-  border-radius: 10px;
-  width: 100%;
-  height: 400px;
-  display: flex;
-  justify-content: space-around;
-  border: solid 1px var(--borde-gris);
-}
-
-.img__section .imagen img {
-  border-radius: 10px;
-  width: 100%;
-  object-fit: contain;
-}
 
 
-  /**/
+  .img__content {
+    width: 100%;
+  }
 
-  .d-flex {
-    width: 80%;
+  .img__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin: 10px auto 0 auto;
   }
 
-  .slide {
-    width: 95%;
-    margin: 16px auto;
+  .img__content .selectores {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  .carousel-item img {
-    border-radius: 15px;
+  .img__section select {
+    width: 100%;
   }
+
+  .img__content .imagen {
+    border-radius: 10px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    border: solid 1px var(--borde-gris);
+  }
+
+  .img__section .imagen img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: contain;
+  }
+  
 
   /* slide marcas*/
 
@@ -622,39 +643,49 @@ span {
   .product__title h2 {
     font-size: 18px;
     text-align: center;
+    color: var(--texto-secundario);
   }
 
   .product__container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .card__container {
+    width: 170px;
   }
 
 
-  .product__container a {
-    width: 150px;
-    max-width: 150px;
-    margin: 10px;
-  }
-
-  .card__container .tittle {
-    font-size: 15px;
-    text-align: initial;
-  }
-
-  .card__price {
-    gap: 10px;
+  .product__card {
+    width: 100%;
   }
 
   .card__price img {
-    height: 20px;
+    width: 25px;
+    margin-right: 5px;
+  }
+
+  .product__card .tittle {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--texto-principal);
   }
 
   .card__price span {
-    font-size: 18px;
+    font-size: 24px;
+    color: var(--texto-principal);
+  }
+
+  .card__time {
+    width: 140px;
+    background-color: var(--boton-primario);
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px;
   }
 
   .card__time span {
-    font-size: 18px;
+    color: var(--price-time);
+    font-size: 20px;
   }
 
   /*footer responsive*/
@@ -706,9 +737,12 @@ span {
     margin-bottom: 5px;
   }
 
+
   .product2__img .deseos img {
     width: 100%;
   }
+
+
 
 
 
@@ -745,5 +779,7 @@ span {
     padding: 10px;
     font-size: 15px;
   }
+
+
 
 }
