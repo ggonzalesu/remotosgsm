@@ -194,11 +194,16 @@ body {
   position: relative;
 }
 
-.product__img .corazon{
+.product__img button{
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 10px;
+  top: 10px;
   z-index: 10px;
+  border: none;
+  background: none;
+}
+
+.product__img button i{
   font-size: 20px;
   color: red;
 }
