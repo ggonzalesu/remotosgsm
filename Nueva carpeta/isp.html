@@ -16,10 +16,9 @@
 </head>
 
 <body>
-  <!-- MENU Y BUSCADOR -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="#">
         <img src="img/logo/logo.png" alt="Bootstrap" width="30" height="24" />
         <nav>REMOTOSGSM</nav>
       </a>
@@ -33,7 +32,7 @@
             <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Panel de Usuario</a>
+            <a class="nav-link" href="#">Productos</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,16 +53,15 @@
               GSMHELP
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="isp.html">Isp Pinout</a></li>
+              <li><a class="dropdown-item" href="#">Test Point</a></li>
+              <li><a class="dropdown-item" href="#">Isp Pinout</a></li>
+              <li><a class="dropdown-item" href="#">RSA Xiaomi</a></li>
               <li><a class="dropdown-item" href="#">Ic Finder</a></li>
               <li><a class="dropdown-item" href="#">FRP</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Registro</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Ingreso</a>
+            <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
       </div>
@@ -74,117 +72,20 @@
     </form>
   </nav>
 
-  <!-- PRODUCTO -->
-  <div class="product2 container">
+  <section class="img__section">
+    <div class="selectores">
+      <!-- Carpeta de marca-->
+      <select name="marca" id="marca"></select>
 
-
-    <div class="titulo__product">
-      <!-- *TITULO -->
-      <h1 class="product2__name">
-        Creditos The Magic Tool - Recarga usuarios existentes
-      </h1>
+      <!-- Imágenes dentro de la Carpeta marca-->
+      <select name="modelo" id="modelo"></select>
     </div>
 
-
-    <div class="info_product">
-      <!-- *IMAGEN DE PRODUCTO -->
-      <div class="product2__img">
-        <div class="deseos">
-          <button class="favorite">
-            <i class="fa-solid fa-heart"></i>
-          </button>
-        </div>
-
-        <img src="img/products/3.jpg" alt="" />
-      </div>
-
-      <!-- *DETALLES DEL PRODUCTO -->
-      <div class="product2__info">
-
-
-        <!-- *PRECIO Y TIEMPO -->
-        <div class="price__time">
-          <div class="price">
-            <img src="img/logo/usdt.svg" alt="" />
-            <span>0.99</span>
-          </div>
-          <div class="time">
-            <i class="fa-sharp fa-regular fa-clock"> </i>
-            <span>Tiempo de entrega: 2 - 15 min</span>
-          </div>
-        </div>
-
-
-
-        <!-- *DATOS DE ORDEN -->
-        <div class="product2__data">
-
-          <span class="title">Completar lo Siguiente y Odenar</span>
-
-          <div class="orden__detail">
-            <span>Usuario</span>
-            <input class="form-control" type="text" placeholder="Ingresar Usuario" />
-            <small>Ingresar Usuario existente</small>
-            <br>
-            <span>cantidad</span>
-            <input class="form-control" type="text" placeholder="Ingresar Cantidad" />
-            <small>Orden minima 10</small>
-          </div>
-
-          <div class="orden">
-            <button class="btn btn-primary" type="button">Ordenar</button>
-          </div>
-        </div>
-
-        <!-- *BOTONES DE COMPARTIR -->
-        <div class="product2__share">
-
-          <button id="shareBtn" class="share">
-            <span>Compartir</span>
-            <i class="fa-solid fa-share-nodes"></i>
-          </button>
-        </div>
-
-      </div>
-
-
+    <!-- Imagen que se va a mostrar al seleccionar un modelo -->
+    <div class="imagen">
+      <img src="ruta_de_la_imagen" alt="" id="selectedImage">
     </div>
-
-  </div>
-
-
-  <div class="container_tab">
-    <div class="tab__box">
-      <button class="tab_btn active">Descripcion</button>
-      <button class="tab_btn">Comentarios</button>
-      <button class="tab_btn">Enlaces</button>
-      <div class="line"></div>
-    </div>
-    <div class="content__box">
-      <div class="content active">
-        <h2>Descripcion</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis adipisci optio voluptatem aut autem
-          dolores libero non ex? Tempore voluptates aliquam soluta quidem officiis a voluptate vel voluptatibus
-          incidunt
-          iusto?</p>
-      </div>
-      <div class="content">
-        <h2>Comentarios</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis adipisci optio voluptatem aut autem
-          dolores libero non ex? Tempore voluptates aliquam soluta quidem officiis a voluptate vel voluptatibus
-          incidunt
-          iusto?</p>
-      </div>
-      <div class="content">
-        <h2>Enlaces</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis adipisci optio voluptatem aut autem
-          dolores libero non ex? Tempore voluptates aliquam soluta quidem officiis a voluptate vel voluptatibus
-          incidunt
-          iusto?</p>
-      </div>
-    </div>
-  </div>
-
+  </section>
 
   <footer>
     <div class="footer__brnad"><a href="index.html">REMOTOSGSM</a></div>
@@ -211,7 +112,9 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
 
-  <script src="script_product.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+
+  <script src="scripttest.js"></script>
 </body>
 
 </html>

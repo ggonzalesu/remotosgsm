@@ -136,6 +136,7 @@ body {
   height: 90px;
   margin: 0 10px;
   filter: grayscale(100%);
+  border-radius: 50%;
 }
 
 .logos__slide img:hover {
@@ -641,6 +642,7 @@ span {
 
   .logos__slide img {
     filter: grayscale(0%);
+    border-radius: 50%;
   }
 
   /* *PRODUCTOS movil */
